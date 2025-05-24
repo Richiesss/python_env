@@ -6,6 +6,7 @@ backups/
 
 # Docker files hash
 .docker_files_hash
+.docker_files_hash.new
 
 # Sensitive configuration
 code-server-config.yaml

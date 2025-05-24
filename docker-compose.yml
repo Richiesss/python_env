@@ -1,0 +1,32 @@
+services:
+    ml_env:
+        hostname: ml_env
+        container_name: ml_env 
+        image: ml-amd64
+        build: .
+        volumes:
+        - ./docker-data/:/root  # ホームディレクトリにマウント（.sshも含む）
+        - ./code-server-config.yaml:/root/.config/code-server/config.yaml:ro  # code-server設定を直接マウント（読み取り専用）
+        - code_server_data:/root/.local/share/code-server  # code-server 拡張機能・設定用
+        - vscode_user_data:/root/.vscode-server/data/User  # VSCode ユーザー設定用
+        - pip_cache:/root/.cache/pip  # pip キャッシュ用
+        - python_libs:/usr/local/lib/python3.10/dist-packages  # Python ライブラリ用
+        - apt_cache:/var/cache/apt  # apt キャッシュ用
+        ports:
+        - "8888:8888"  # Jupyter用ポート
+        - "8080:8080"  # code-server用ポート
+        tty: true
+        # restart: always を削除（手動管理のため）
+        platform: linux/amd64  # x86アーキテクチャの指定
+
+volumes:
+    code_server_data:
+        driver: local
+    vscode_user_data:
+        driver: local
+    pip_cache:
+        driver: local
+    python_libs:
+        driver: local
+    apt_cache:
+        driver: local
