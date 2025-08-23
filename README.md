@@ -1,6 +1,6 @@
 # Linux(WSL2)上で動作するx86機械学習・開発環境
 
-本番環境(x86)との互換性を保ちながらLinux(WSL2)上で開発できる機械学習環境のDockerセットアップです。x86 Dockerコンテナを使用しています。
+本番環境(x86)との互換性を保ちながらLinux(WSL2)上で開発できる機械学習環境のDockerセットアップである。x86 Dockerコンテナを使用している。
 
 ## システム構成
 
@@ -157,7 +157,7 @@ Docker Volumes:
 ## セットアップ手順
 
 > [!TIP]
-> いろいろファイルがありますが、とりあえずこれをやれば使えるようになるので大丈夫です。
+> いろいろファイルがあるが、とりあえずこれをやれば使えるようになるのでOK。
 
 ### 初回セットアップ
 
@@ -190,7 +190,7 @@ sudo snap install docker
 ```
 
 #### いよいよ環境構築
-基本的には以下のコマンドを上から順番に叩けばいい
+基本的には以下のコマンドを上から順番に叩けばよい
 ```bash
 # リポジトリをクローン
 git clone https://github.com/Richiesss/python_env.git
@@ -206,7 +206,7 @@ cp code-server-config.yaml.sample code-server-config.yaml
 code code-server-config.yaml
 # passwordの値を任意のパスワードに変更
 
-# コンテナを起動（必要なディレクトリは自動作成されます）
+# コンテナを起動（必要なディレクトリは自動作成される）
 ./start-container.sh
 ```
 
@@ -229,20 +229,20 @@ code code-server-config.yaml
 
 ### 自動モードの使用
 
-対話的な入力をスキップしてデフォルト設定で起動する場合、`-auto`または`--auto`オプションを使用できます：
+対話的な入力をスキップしてデフォルト設定で起動する場合、`-auto`または`--auto`オプションを使用できる：
 
 ```bash
 ./start-container.sh --auto
 ```
 
-自動モードでは以下のデフォルト設定が適用されます：
+自動モードでは以下のデフォルト設定が適用される：
 
 - 24時間ごとの自動バックアップ（30日間保持）
 - JupyterLabとCode-Serverの両方が自動起動
 - 前回のバックアップからの自動復元
 - すべてのユーザー入力をスキップ
 
-これは、Launch Agent経由での自動起動や、スクリプトでの呼び出しに最適です。例えば、Mac起動時に自動的に環境を立ち上げる場合は以下のようにLaunch Agentを設定できます：
+これは、Launch Agent経由での自動起動や、スクリプトでの呼び出しに最適である。例えば、Mac起動時に自動的に環境を立ち上げる場合は以下のようにLaunch Agentを設定できる：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -290,13 +290,13 @@ code code-server-config.yaml
    - Code-Server: `http://[Macのアドレス]:8080`
    - パスワード: `code-server-config.yaml`で設定した値
 
-**重要**: code-server-config.yamlのパスワードは必ず変更してください。
+**重要**: code-server-config.yamlのパスワードは必ず変更すること。
 
 ## 自動バックアップと復元機能
 
-突然のシャットダウンや電源喪失からデータを保護するため、自動バックアップ機能があります：
+突然のシャットダウンや電源喪失からデータを保護するため、自動バックアップ機能がある：
 
-- **スケジュール設定**: コンテナ起動時に自動バックアップの間隔を設定できます
+- **スケジュール設定**: コンテナ起動時に自動バックアップの間隔を設定できる
 - **デフォルト設定**: 24時間ごとのバックアップ、30日間保持
 - **自動復元**: コンテナ再起動時に最新のバックアップから環境を復元
 - **バックアップ内容**:
@@ -316,7 +316,7 @@ code code-server-config.yaml
 
 ## 手動バックアップと復元
 
-必要に応じて手動でバックアップと復元を行うことも可能です：
+必要に応じて手動でバックアップと復元を行うことも可能である：
 
 ```bash
 # 現在の環境をバックアップ
@@ -328,7 +328,7 @@ code code-server-config.yaml
 
 ## データの永続性
 
-以下のデータは永続化されます：
+以下のデータは永続化される：
 
 **ホストディレクトリにマウント（./docker-data/）:**
 - ホームディレクトリのファイル全般
@@ -342,7 +342,7 @@ code code-server-config.yaml
 - Python ライブラリ
 - apt キャッシュ
 
-これにより、コンテナを再起動または再作成しても、インストールした拡張機能やライブラリ、SSH鍵が保持されます。また、バックアップと復元機能により、万が一データが破損した場合でも前の状態に戻すことができます。
+これにより、コンテナを再起動または再作成しても、インストールした拡張機能やライブラリ、SSH鍵が保持される。また、バックアップと復元機能により、万が一データが破損した場合でも前の状態に戻すことができる。
 
 ## よくある操作
 
@@ -393,16 +393,16 @@ code code-server-config.yaml
 
 ## セキュリティとバージョン管理
 
-プロジェクトには2つの`.gitignore`ファイルが含まれています：
+プロジェクトには2つの`.gitignore`ファイルが含まれている：
 
 1. **プロジェクトルートの`.gitignore`**: 
    - `docker-data/`とバックアップファイルをGitから除外
    - `code-server-config.yaml`（パスワード含む）を除外
 2. **`docker-data/.gitignore`**: SSH鍵などの機密情報を除外（自動生成）
 
-これにより、機密情報が誤ってGitにコミットされることを防ぎます。
+これにより、機密情報が誤ってGitにコミットされることを防ぐ。
 
-**注意**: `code-server-config.yaml`はGitで管理されません。サンプルファイル（`code-server-config.yaml.sample`）をコピーして使用してください。
+**注意**: `code-server-config.yaml`はGitで管理されない。サンプルファイル（`code-server-config.yaml.sample`）をコピーして使用すること。
 
 ## ディレクトリ構造
 
@@ -429,7 +429,7 @@ code code-server-config.yaml
 
 ## GitHubからのリポジトリクローン（SSH設定）
 
-コンテナにはSSHクライアントがインストールされており、GitHubなどからSSH経由でリポジトリをクローンできます。
+コンテナにはSSHクライアントがインストールされており、GitHubなどからSSH経由でリポジトリをクローンできる。
 
 ### SSH鍵の設定方法
 
@@ -443,9 +443,9 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 cat ~/.ssh/id_ed25519.pub
 ```
 
-生成した公開鍵をGitHubの Settings > SSH and GPG keys > New SSH key に追加してください。
+生成した公開鍵をGitHubの Settings > SSH and GPG keys > New SSH key に追加する。
 
-SSH鍵は`./docker-data/.ssh/`に保存されるため、ホスト側からも以下のように確認できます：
+SSH鍵は`./docker-data/.ssh/`に保存されるため、ホスト側からも以下のように確認できる：
 ```bash
 # ホスト側から確認
 cat ./docker-data/.ssh/id_ed25519.pub
@@ -453,7 +453,7 @@ cat ./docker-data/.ssh/id_ed25519.pub
 
 #### 方法2: ホストのSSH鍵をコピー
 
-ホストのSSH鍵を使用したい場合は、コピーすることができます：
+ホストのSSH鍵を使用したい場合は、コピーすることができる：
 
 ```bash
 # ホスト側で実行（秘密鍵のパーミッションに注意）
@@ -465,7 +465,7 @@ chmod 644 ./docker-data/.ssh/id_ed25519.pub
 
 ### GitHubからのクローン
 
-SSH鍵の設定後、以下のようにリポジトリをクローンできます：
+SSH鍵の設定後、以下のようにリポジトリをクローンできる：
 
 ```bash
 # 初回接続時はGitHubのホスト鍵を承認
@@ -483,11 +483,11 @@ git config --global user.name "Your Name"
 git config --global user.email "your_email@example.com"
 ```
 
-**注意**: SSH鍵は`./docker-data/.ssh/`に保存されるため、コンテナを再起動しても保持されます。このディレクトリはホスト側からも確認できますが、セキュリティのため適切なパーミッション（700）が設定されています。
+**注意**: SSH鍵は`./docker-data/.ssh/`に保存されるため、コンテナを再起動しても保持される。このディレクトリはホスト側からも確認できるが、セキュリティのため適切なパーミッション（700）が設定されている。
 
 ## パスワード変更方法
 
-Code-Serverのパスワードを変更するには、`code-server-config.yaml`ファイルを編集してください：
+Code-Serverのパスワードを変更するには、`code-server-config.yaml`ファイルを編集する：
 
 ```yaml
 bind-addr: 0.0.0.0:8080
@@ -496,7 +496,7 @@ password: 新しいパスワード
 cert: false
 ```
 
-**注意**: 現在の設定ファイルにはサンプルパスワードが設定されています。セキュリティのため、必ず変更してください。
+**注意**: 現在の設定ファイルにはサンプルパスワードが設定されている。セキュリティのため、必ず変更すること。
 
 変更後の手順：
 1. コンテナを再ビルド: `docker-compose build`
@@ -573,7 +573,7 @@ code-server --config ~/.config/code-server/config.yaml ~
 
 ### docker-composeコマンドでエラーが出る場合
 
-スクリプト内では`/usr/local/bin/docker-compose`のパスを使用しています。異なるパスにインストールされている場合は、各スクリプト内のDOCKER_COMPOSE変数を修正してください：
+スクリプト内では`/usr/local/bin/docker-compose`のパスを使用している。異なるパスにインストールされている場合は、各スクリプト内のDOCKER_COMPOSE変数を修正すること：
 
 ```bash
 # docker-composeの絶対パスを確認
@@ -595,11 +595,11 @@ tar -tvf ./backups/ml_env_backup_YYYYMMDD_HHMMSS.tar.gz
 
 ### 作業ディレクトリについて
 
-コンテナ内の作業ディレクトリは`/root`（ホームディレクトリ）です。`docker-data`ディレクトリの内容がここにマウントされるため、ホスト側の`docker-data`内のファイルがコンテナ内の`/root`で利用できます。
+コンテナ内の作業ディレクトリは`/root`（ホームディレクトリ）である。`docker-data`ディレクトリの内容がここにマウントされるため、ホスト側の`docker-data`内のファイルがコンテナ内の`/root`で利用できる。
 
 ## ライセンス
 MITライセンス
 
 ## 貢献
 
-問題報告や機能リクエストは、GitHubのIssuesで受け付けています。Pull Requestも歓迎します。
+問題報告や機能リクエストは、GitHubのIssuesで受け付けている。Pull Requestも歓迎する。
