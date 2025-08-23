@@ -242,7 +242,7 @@ code code-server-config.yaml
 - 前回のバックアップからの自動復元
 - すべてのユーザー入力をスキップ
 
-これは、Launch Agent経由での自動起動や、スクリプトでの呼び出しに最適である。例えば、Mac起動時に自動的に環境を立ち上げる場合は以下のようにLaunch Agentを設定できる：
+<!-- これは、Launch Agent経由での自動起動や、スクリプトでの呼び出しに最適である。例えば、Mac起動時に自動的に環境を立ち上げる場合は以下のようにLaunch Agentを設定できる：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -261,7 +261,7 @@ code code-server-config.yaml
     </array>
 </dict>
 </plist>
-```
+``` -->
 
 ### ファイルと役割
 
@@ -281,7 +281,7 @@ code code-server-config.yaml
 | `schedule-backup.sh` | 定期バックアップのスケジューラ | `./schedule-backup.sh [hours] [days]` |
 | `cleanup-old-backups.sh` | 古いバックアップを削除するスクリプト | `./cleanup-old-backups.sh [days]` |
 
-## iPadからアクセスする方法
+<!-- ## iPadからアクセスする方法
 
 1. MacとiPadが同じWiFiネットワークに接続されていることを確認
 2. Macのプライベートネットワークアドレスを確認（システム環境設定→ネットワーク）
@@ -290,7 +290,7 @@ code code-server-config.yaml
    - Code-Server: `http://[Macのアドレス]:8080`
    - パスワード: `code-server-config.yaml`で設定した値
 
-**重要**: code-server-config.yamlのパスワードは必ず変更すること。
+**重要**: code-server-config.yamlのパスワードは必ず変更すること。 -->
 
 ## 自動バックアップと復元機能
 
