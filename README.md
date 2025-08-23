@@ -24,17 +24,27 @@
 
 ### 初回セットアップ
 
+#### WSL2(Windows Subsystem for Linux2)の導入
+
 1. **管理者権限でPowerShellを開く**
 2. **以下のコマンドを入力してWSLを有効化する**
 
 ```powershell
+#WSLのインストール
 wsl --install
+#WSLを起動
+wsl
 ```
+
+
+
+#### Dockerの導入
+
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/あなたのユーザー名/リポジトリ名.git
-cd リポジトリ名
+git clone https://github.com/Richiesss/python_env.git
+cd python_env
 
 # 実行権限を付与
 chmod +x *.sh
