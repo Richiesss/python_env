@@ -25,6 +25,9 @@
 ### 初回セットアップ
 
 #### WSL2(Windows Subsystem for Linux2)の導入
+WSL2とはなんぞや？
+[text](https://zenn.dev/oit2003/articles/2f3f8576df0d71)
+
 
 1. **管理者権限でPowerShellを開く**
 2. **以下のコマンドを入力してWSLを有効化する**
@@ -39,6 +42,8 @@ wsl
 
 
 #### Dockerの導入
+Dockerとはなんぞや？
+[text](https://qiita.com/michiru-miyagawa/items/fb41563df9dc98fdf549)
 
 
 ```bash
