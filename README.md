@@ -103,7 +103,7 @@ Docker Volumes:
 - **Layer Caching**: Dockerfileの階層化による効率的ビルド
 - **Resource Limits**: 必要に応じてリソース制限設定
 
-## 特徴(読み飛ばしてOK)
+## 特徴
 
 - **x86互換性**: 本番環境と同じx86アーキテクチャで動作
 - **PyTorch対応**: x86版PyTorch 2.5.1がプリインストール済み
@@ -137,7 +137,8 @@ WSL2とはなんぞや？
 #WSLのインストール
 wsl --install
 
-#WSLを起動
+#ここで一度PCを再起動しておく
+#再度PowerShellからWSLを起動
 wsl
 ```
 
@@ -349,11 +350,11 @@ code code-server-config.yaml
 ./cleanup-old-backups.sh 14
 ```
 
-## 前提条件
+<!-- ## 前提条件
 
 - M1/M2/M3 Mac（Apple Silicon）
 - Docker Desktop for Mac
-- Docker DesktopでRosetta 2エミュレーションが有効化されていること
+- Docker DesktopでRosetta 2エミュレーションが有効化されていること -->
 
 ## セキュリティとバージョン管理
 
