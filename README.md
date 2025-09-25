@@ -129,9 +129,9 @@ Docker Volumes:
 WSL2とはなんぞや？
 [解説](https://zenn.dev/oit2003/articles/2f3f8576df0d71)
 
-
-1. **管理者権限でPowerShellを開く**
-2. **以下のコマンドを入力してWSLを有効化する**
+1. **WSL2の有効化(https://qiita.com/tatsushi_do_ob/items/a2b018a7eaaa84670d91)を参考に**
+2. **管理者権限でPowerShellを開く**
+3. **以下のコマンドを入力してWSLを有効化する**
 
 ```powershell
 #WSLのインストール
