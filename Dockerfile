@@ -24,6 +24,20 @@ RUN apt-get update && apt-get install -y \
 ENV TZ=Asia/Tokyo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+# 追加: GUI (X11) runtime packages for Tk/Qt and basic X11 test tools
+RUN apt-get update && apt-get install -y \
+    x11-apps \
+    python3-tk \
+    python3-pyqt5 \
+    libgl1 \
+    libglib2.0-0 \
+    libxkbcommon-x11-0 \
+    libsm6 \
+    libxext6 \
+    libxrender1 \
+    fonts-liberation \
+    && rm -rf /var/lib/apt/lists/*
+
 # Pythonのエイリアス設定
 RUN ln -sf /usr/bin/python3 /usr/bin/python && \
     ln -sf /usr/bin/pip3 /usr/bin/pip

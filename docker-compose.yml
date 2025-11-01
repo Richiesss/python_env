@@ -12,12 +12,22 @@ services:
         - pip_cache:/root/.cache/pip  # pip キャッシュ用
         - python_libs:/usr/local/lib/python3.10/dist-packages  # Python ライブラリ用
         - apt_cache:/var/cache/apt  # apt キャッシュ用
+        # 追加: X11 転送に必要なマウント
+        - /tmp/.X11-unix:/tmp/.X11-unix:rw
+        - ${HOME}/.Xauthority:/tmp/.host_xauthority:ro
         ports:
         - "8888:8888"  # Jupyter用ポート
         - "8080:8080"  # code-server用ポート
         tty: true
         # restart: always を削除（手動管理のため）
         platform: linux/amd64  # x86アーキテクチャの指定
+        environment:
+            # 追加: X11 関連環境変数
+            DISPLAY: ${DISPLAY}
+            XAUTHORITY: /tmp/.host_xauthority
+            QT_X11_NO_MITSHM: "1"
+            # 必要に応じて Wayland でも X11 を強制
+            # QT_QPA_PLATFORM: xcb
 
 volumes:
     code_server_data:
