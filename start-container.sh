@@ -5,7 +5,8 @@ set -e
 
 # docker-composeの絶対パスを指定
 # DOCKER_COMPOSE="/usr/local/bin/docker-compose"
-DOCKER_COMPOSE="/snap/bin/docker-compose $COMPOSE_FILES"
+DOCKER_COMPOSE="docker-compose $COMPOSE_FILES"
+# DOCKER_COMPOSE="/snap/bin/docker-compose $COMPOSE_FILES"
 
 # 自動モードフラグ
 AUTO_MODE=false
