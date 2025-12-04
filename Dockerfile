@@ -52,7 +52,8 @@ RUN pip install --upgrade pip && \
     matplotlib \
     scikit-learn \
     jupyter \
-    jupyterlab \
+    jupyterlab && \
+    pip install \
     torch \
     torchvision \
     torchaudio \
