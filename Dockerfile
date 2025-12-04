@@ -1,4 +1,5 @@
-FROM --platform=linux/amd64 ubuntu:22.04
+ARG BASE_IMAGE=ubuntu:22.04
+FROM --platform=linux/amd64 ${BASE_IMAGE}
 
 # 基本的なパッケージのインストール
 RUN apt-get update && apt-get install -y \
@@ -43,6 +44,7 @@ RUN ln -sf /usr/bin/python3 /usr/bin/python && \
     ln -sf /usr/bin/pip3 /usr/bin/pip
 
 # 必要なPythonパッケージのインストール
+# PyTorch with CUDA 12.1 support
 RUN pip install --upgrade pip && \
     pip install \
     numpy \
@@ -53,7 +55,8 @@ RUN pip install --upgrade pip && \
     jupyterlab \
     torch \
     torchvision \
-    torchaudio
+    torchaudio \
+    --index-url https://download.pytorch.org/whl/cu121
 
 # code-serverのインストール
 RUN curl -fsSL https://code-server.dev/install.sh | sh

@@ -5,10 +5,22 @@ set -e
 
 # docker-composeの絶対パスを指定
 # DOCKER_COMPOSE="/usr/local/bin/docker-compose"
-DOCKER_COMPOSE="/snap/bin/docker-compose"
+DOCKER_COMPOSE="/snap/bin/docker-compose $COMPOSE_FILES"
 
 # 自動モードフラグ
 AUTO_MODE=false
+
+# GPU検出と設定
+COMPOSE_FILES="-f docker-compose.yml"
+BUILD_ARGS="--build-arg BASE_IMAGE=ubuntu:22.04"
+
+if command -v nvidia-smi &> /dev/null; then
+    echo "NVIDIA GPU detected. Enabling GPU support..."
+    COMPOSE_FILES="-f docker-compose.yml -f docker-compose.gpu.yml"
+    BUILD_ARGS="--build-arg BASE_IMAGE=nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04"
+else
+    echo "NVIDIA GPU not detected. Using CPU-only mode..."
+fi
 
 # 引数の解析
 for arg in "$@"; do
@@ -336,7 +348,7 @@ main() {
     if check_files_changed; then
         echo "Dockerファイルが変更されています。コンテナを再ビルドします..."
         $DOCKER_COMPOSE down
-        $DOCKER_COMPOSE build
+        $DOCKER_COMPOSE build $BUILD_ARGS
         update_hash
         echo "再ビルドが完了しました。"
         
